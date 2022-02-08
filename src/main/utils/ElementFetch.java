@@ -72,9 +72,20 @@ public class ElementFetch {
         return null;
     }
 
-    public void mouseOver(String identifierType,String identifier){
+    public void mouseOver(String identifierType,String identifier,String find){
         switch (identifierType) {
             case "xpath":
+                switch (find){
+                    case "element":
+                        WebElement ele = driver.findElement(By.xpath(identifier));
+                        Actions action = new Actions(driver);
+                        action.moveToElement(ele).perform();
+                    case "elements":
+                        WebElement ele2 = driver.findElements(By.xpath(identifier)).get(0);
+                        Actions action2 = new Actions(driver);
+                        action2.moveToElement(ele2).perform();
+                     }
+
                 WebElement ele = driver.findElement(By.xpath(identifier));
                 Actions action = new Actions(driver);
                 action.moveToElement(ele).perform();

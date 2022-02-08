@@ -12,8 +12,8 @@ public class ViolationSearchEvents {
 
     public void navigateToViolationSearchTab() throws InterruptedException {
         ElementFetch elementFetch=new ElementFetch();
-        elementFetch.mouseOver("xpath",violation);
-        elementFetch.mouseOver("id",search);
+        elementFetch.mouseOver("id",violation,"element");
+        elementFetch.mouseOver("id",search,"elements");
         elementFetch.getWebElement("xpath",violationSearchOption).click();
         //navigateTo("violationSearch");
         Thread.sleep(3000);

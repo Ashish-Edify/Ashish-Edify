@@ -2,6 +2,7 @@ package main.java.pageEvents;
 
 import main.utils.ElementFetch;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import static main.PageObjects.ViolationPageElements.*;
@@ -11,11 +12,7 @@ import static test.java.BaseTest.driver;
 public class ViolationSearchEvents {
 
     public void navigateToViolationSearchTab() throws InterruptedException {
-        ElementFetch elementFetch=new ElementFetch();
-        elementFetch.mouseOver("id",violation,"element");
-        elementFetch.mouseOver("id",search,"elements");
-        elementFetch.getWebElement("xpath",violationSearchOption).click();
-        //navigateTo("violationSearch");
+        driver.get(violationSearch);
         Thread.sleep(3000);
     }
 

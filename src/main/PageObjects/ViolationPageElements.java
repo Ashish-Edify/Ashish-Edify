@@ -1,7 +1,7 @@
 package main.PageObjects;
 
 public interface ViolationPageElements {
-    String pageTitle="//span[@translate='SEARCH-VIOLATION.HEADING-Search-Violation']";
+    String ViolationpageTitleXpath="//span[@translate='SEARCH-VIOLATION.HEADING-Search-Violation']";
     String violationPageTitleAttribute="translate";
     String violation="violation";
     String search="//li[@id='liViolation']//ul//li";

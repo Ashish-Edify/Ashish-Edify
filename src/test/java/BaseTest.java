@@ -33,15 +33,13 @@ public class BaseTest {
     public static ExtentTest logger;
     public static WebDriverWait waiting;
     public static ExtentReports extents;
-    WebDriverWait wait;
+
 
 
 
 
     @BeforeTest
     public void beforeTestMethod(){
-
-
         htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/reports/STMExtentReport.html");
         extent = new ExtentReports ();
         extent.attachReporter(htmlReporter);
@@ -70,16 +68,13 @@ public class BaseTest {
     @BeforeMethod
     @Parameters(value = {"browserName"})   //Browser value will be picking from testNG file and pass it here
     public void beforeMethod(String browserName, Method testMethod){
-        wait = new WebDriverWait(driver,30);
         logger=extent.createTest(testMethod.getName());
         setupDriver(browserName);
         driver.manage().window().maximize();
         driver.get(Constants.url);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.elementToBeClickable(By.name("username")));
-        driver.findElement(By.name("username")).sendKeys(username);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        //wait.until(ExpectedConditions.elementToBeClickable(By.name("username")));
+
     }
 
 

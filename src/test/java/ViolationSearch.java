@@ -8,13 +8,20 @@ public class ViolationSearch extends BaseTest {
     ViolationSearchEvents violation = new ViolationSearchEvents();
         @Test
         public void navigateToViolationPage() throws InterruptedException {
+            LoginPageEvents login=new LoginPageEvents();
+            login.enterUsernamePassword();
+            Thread.sleep(3000);
+            login.clickOnSubmitButton();
 
             violation.navigateToViolationSearchTab();
-            violation.verifyViolationPageTitle();
+            violation.verifyViolationPageTitle("Search Violations");
         }
         @Test
-        public void violationTypeSearch(){
-            violation.selectViolationType();
-            violation.clickOnViolaitionSearch();
+        public void violationSearchDropDown() throws InterruptedException {
+            ViolationSearch search= new ViolationSearch();
+            search.navigateToViolationPage();
+            violation.getDropdownValue();
+
         }
+
 }

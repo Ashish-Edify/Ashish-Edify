@@ -5,16 +5,16 @@ import main.java.pageEvents.ViolationSearchEvents;
 import org.testng.annotations.Test;
 
 public class ViolationSearch extends BaseTest {
-
+    ViolationSearchEvents violation = new ViolationSearchEvents();
         @Test
-        public void violationSearch() throws InterruptedException {
-            LoginPageEvents login = new LoginPageEvents();
-            login.enterUsernamePassword();
-            login.clickOnSubmitButton();
-            Thread.sleep(3000);
-            ViolationSearchEvents violation = new ViolationSearchEvents();
+        public void navigateToViolationPage() throws InterruptedException {
+
             violation.navigateToViolationSearchTab();
-            Thread.sleep(5000);
             violation.verifyViolationPageTitle();
+        }
+        @Test
+        public void violationTypeSearch(){
+            violation.selectViolationType();
+            violation.clickOnViolaitionSearch();
         }
 }

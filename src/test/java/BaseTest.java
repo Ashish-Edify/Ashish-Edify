@@ -9,9 +9,11 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import main.utils.Constants;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -19,6 +21,9 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
+
+import static main.utils.Constants.password;
+import static main.utils.Constants.username;
 
 public class BaseTest {
 
@@ -28,21 +33,35 @@ public class BaseTest {
     public static ExtentTest logger;
     public static WebDriverWait waiting;
     public static ExtentReports extents;
-
+    WebDriverWait wait;
 
 
 
 
     @BeforeTest
     public void beforeTestMethod(){
-        htmlReporter=new ExtentHtmlReporter("E:\\reports");
-        htmlReporter.config().setEncoding("uft-8");
-        htmlReporter.config().setDocumentTitle("Automation Report");
-        htmlReporter.config().setReportName("Automation Test Report");
-        htmlReporter.config().setTheme(Theme.DARK);
+
+
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/reports/STMExtentReport.html");
+        extent = new ExtentReports ();
+        extent.attachReporter(htmlReporter);
+        extent.setSystemInfo("Host Name", "SoftwareTestingMaterial");
+        extent.setSystemInfo("Environment", "Automation Testing");
+        extent.setSystemInfo("User Name", "Rajkumar SM");
+        htmlReporter.config().setDocumentTitle("Title of the Report Comes here");
+        htmlReporter.config().setReportName("Name of the Report Comes here");
+       // htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
+        htmlReporter.config().setTheme(Theme.STANDARD);
         extent=new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Automation Tester", "Edify Technology");
+
+        /*htmlReporter=new ExtentHtmlReporter("E:\\reports");
+        htmlReporter.config().setEncoding("uft-8");
+        htmlReporter.config().setDocumentTitle("Automation Report");
+        htmlReporter.config().setReportName("Automation Test Report");
+        htmlReporter.config().setTheme(Theme.DARK);*/
+
     }
 
 
@@ -51,11 +70,16 @@ public class BaseTest {
     @BeforeMethod
     @Parameters(value = {"browserName"})   //Browser value will be picking from testNG file and pass it here
     public void beforeMethod(String browserName, Method testMethod){
+        wait = new WebDriverWait(driver,30);
         logger=extent.createTest(testMethod.getName());
         setupDriver(browserName);
         driver.manage().window().maximize();
         driver.get(Constants.url);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(By.name("username")));
+        driver.findElement(By.name("username")).sendKeys(username);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
 
 

@@ -8,4 +8,6 @@ public interface ViolationPageElements {
     String violationSearchOption="//li[@id='liViolation']//ul//li//ul//li";
     String violationTypecheckbox="//input[@type='checkbox' and @name='chkViolationDetailsFreeze']";
     String violationSearchButton="btnSearchViolation";
+    String violationTypeBox="//*[@options='ViolationDropDown']//button";
+    String violationTypeDropDown="//*[@options='ViolationDropDown']//ul";
 }

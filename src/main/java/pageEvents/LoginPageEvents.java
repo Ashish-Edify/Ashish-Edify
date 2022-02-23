@@ -22,6 +22,7 @@ WebDriverWait wait;
     public void clickOnSubmitButton() throws InterruptedException {
         ElementFetch elementFetch=new ElementFetch();
         WebDriverWait wait = new WebDriverWait(driver,30);
+        Thread.sleep(5000);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(LoginPageElements.submitButton)));
         elementFetch.getWebElement("XPATH", LoginPageElements.submitButton).click();
 

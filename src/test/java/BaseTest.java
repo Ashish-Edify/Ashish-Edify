@@ -9,11 +9,9 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import main.utils.Constants;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -21,9 +19,6 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
-
-import static main.utils.Constants.password;
-import static main.utils.Constants.username;
 
 public class BaseTest {
 
@@ -33,7 +28,7 @@ public class BaseTest {
     public static ExtentTest logger;
     public static WebDriverWait waiting;
     public static ExtentReports extents;
-
+    WebDriverWait wait= new WebDriverWait(driver,30);;
 
 
 
@@ -48,21 +43,12 @@ public class BaseTest {
         extent.setSystemInfo("User Name", "Rajkumar SM");
         htmlReporter.config().setDocumentTitle("Title of the Report Comes here");
         htmlReporter.config().setReportName("Name of the Report Comes here");
-       // htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
         htmlReporter.config().setTheme(Theme.STANDARD);
         extent=new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Automation Tester", "Edify Technology");
 
-        /*htmlReporter=new ExtentHtmlReporter("E:\\reports");
-        htmlReporter.config().setEncoding("uft-8");
-        htmlReporter.config().setDocumentTitle("Automation Report");
-        htmlReporter.config().setReportName("Automation Test Report");
-        htmlReporter.config().setTheme(Theme.DARK);*/
-
     }
-
-
 
 
     @BeforeMethod

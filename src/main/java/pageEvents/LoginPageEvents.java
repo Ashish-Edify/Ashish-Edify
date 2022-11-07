@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
+import static test.java.BaseTest.driver;
 
 public class LoginPageEvents {
 WebDriverWait wait;
@@ -16,16 +19,21 @@ WebDriverWait wait;
         Assert.assertTrue(elementFetch.getWebElements("XPATH",LoginPageElements.loginText).size()>0);
     }
 
+    public void clickOnLoginButton(){
+        ElementFetch elementFetch=new ElementFetch();
+        elementFetch.getWebElement("XPATH",LoginPageElements.loginButton).click();
+    }
     public void clickOnSubmitButton() throws InterruptedException {
         ElementFetch elementFetch=new ElementFetch();
-        Thread.sleep(10000);
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        Thread.sleep(5000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(LoginPageElements.submitButton)));
         elementFetch.getWebElement("XPATH", LoginPageElements.submitButton).click();
-        //wait(10000);
+
     }
 
     public void enterUsernamePassword(){
         ElementFetch elementFetch=new ElementFetch();
-        //elementFetch.waitFunction(LoginPageElements.userName,"xpath");
         elementFetch.getWebElement("XPATH",LoginPageElements.userName).sendKeys("msi@matteson.org");
         elementFetch.getWebElement("XPATH",LoginPageElements.password).sendKeys("MsiTesting1");
     }

@@ -1,8 +1,8 @@
 package main.utils;
 
 public interface Constants {
-    String url="https://matteson.core360dev.com:6001/admin/#/login.html";
-    String violationSearch="https://matteson.core360dev.com:6001/admin/#/violations";
+    String url="https://www.udemy.com/";
+    String violationSearch="https://matteson.qa.core360dev.net/admin/#/violations";
     String username="msi@matteson.org";
     String password="MsiTesting1";
 }

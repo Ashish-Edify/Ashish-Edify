@@ -19,6 +19,10 @@ WebDriverWait wait;
         Assert.assertTrue(elementFetch.getWebElements("XPATH",LoginPageElements.loginText).size()>0);
     }
 
+    public void clickOnLoginButton(){
+        ElementFetch elementFetch=new ElementFetch();
+        elementFetch.getWebElement("XPATH",LoginPageElements.loginButton).click();
+    }
     public void clickOnSubmitButton() throws InterruptedException {
         ElementFetch elementFetch=new ElementFetch();
         WebDriverWait wait = new WebDriverWait(driver,30);

@@ -8,21 +8,22 @@ public class ViolationSearch extends BaseTest {
     ViolationSearchEvents violation = new ViolationSearchEvents();
     LoginPageEvents login=new LoginPageEvents();
 
-        @Test
+        /*@Test
         public void navigateToViolationPage() throws InterruptedException {
             login.enterUsernamePassword();
             Thread.sleep(3000);
             login.clickOnSubmitButton();
             violation.navigateToViolationSearchTab();
             violation.verifyViolationPageTitle("Search Violations");
-        }
+        }*/
         @Test
         public void violation_Test_Search_DropDown() throws InterruptedException {
             login.enterUsernamePassword();
             Thread.sleep(3000);
             login.clickOnSubmitButton();
             violation.navigateToViolationSearchTab();
-            violation.clickOnDropdown();
+            violation.VerifyUiTextValue("360 Property View");
+            violation.clickOnDropdown("");
         }
        /* @Test
         public void search_For_Violation_Tecket() throws InterruptedException {

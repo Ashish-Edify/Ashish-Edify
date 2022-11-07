@@ -27,11 +27,6 @@ public class BaseTest {
     public static ExtentReports extent;
     public static ExtentTest logger;
     public static WebDriverWait waiting;
-    public static ExtentReports extents;
-    WebDriverWait wait= new WebDriverWait(driver,30);;
-
-
-
 
     @BeforeTest
     public void beforeTestMethod(){
@@ -43,7 +38,7 @@ public class BaseTest {
         extent.setSystemInfo("User Name", "Rajkumar SM");
         htmlReporter.config().setDocumentTitle("Title of the Report Comes here");
         htmlReporter.config().setReportName("Name of the Report Comes here");
-        htmlReporter.config().setTheme(Theme.STANDARD);
+         htmlReporter.config().setTheme(Theme.STANDARD);
         extent=new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Automation Tester", "Edify Technology");

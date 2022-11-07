@@ -7,7 +7,6 @@
     <test name="Test Automation">
         <parameter name="browserName" value="chrome" />
         <classes>
-            <class name="test.java.Login"/>
             <class name="test.java.ViolationSearch"/>
         </classes>
     </test>
